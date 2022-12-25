@@ -16,12 +16,13 @@ private:
     QString username;
     QString password;
     QString fullName;
-    QString adress;
-    QString phoneNumber;
 
-    QMap<QString, int> check{ {"ahmed", hashing("ahmedpass")}, {"mohamed", hashing("mohamedpass")} };
+
+
 
 public:
+    QMap<QString, int> check{ {"ahmed", hashing("ahmedpass")}, {"mohamed", hashing("mohamedpass")} };
+    QMap<QString, QString> usernameFullName{{"ahmed", "Ahmed Elsayed"}, {"mohamed", "Mohamed Elsayed"} };
 
     Admin();
 
@@ -33,9 +34,9 @@ public:
 
     bool checkPassword(QString password);
 
-    void registerNew(QString username, QString password, QString fullName, QString adress, QString phoneNumber);
+    void registerNew(QString username, QString password, QString fullName, QMap<QString, int> &check, QMap<QString, QString> &usernameFullName);
 
-    void loginCheck(QString username, QString password);
+    bool loginCheck(QString username, QString password);
 
     void setUsername(QString username);
 
@@ -43,15 +44,11 @@ public:
 
     void setFullName(QString fullName);
 
-    void setAdress(QString adress);//
 
-    void setPhoneNumber(QString phoneNumber);//
 
-    QString getFullName();
+    QString getFullName(QString username);
 
-    QString getAdress();//
 
-    QString getPhoneNumber();//
 
     ~Admin();
 };
